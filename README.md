@@ -32,7 +32,8 @@ Synthetic colonoscopy videos generated from the Mikoto training simulator.
 
 Example dataset frames:
 
-![Dataset Example](images/dataset_example.png)
+![Dataset Example_1](images/dataset_example_1.png)
+![Dataset Example_2](images/dataset_example_2.png)
 
 ---
 
