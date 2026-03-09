@@ -41,25 +41,30 @@ Example dataset frames:
 
 The proposed approach uses **optical flow** to capture motion patterns between consecutive frames in colonoscopy videos.
 
+Optical flow is computed using **RAFT (Recurrent All-Pairs Field Transforms)**, a state-of-the-art deep learning method for dense optical flow estimation.
+
+The extracted motion information is then used as input to a deep neural network for colon region classification.
+
 The workflow is as follows:
 
 1. Extract video frames from colonoscopy recordings
-2. Compute optical flow between consecutive frames
-3. Use motion features as input to the classification model
-4. Predict the colon region
+2. Compute optical flow between consecutive frames using **RAFT**
+3. Generate motion representations from optical flow
+4. Use the motion features as input to a classification network
+5. Predict the colon region
 
 ---
 
 # Model Pipeline
 
-![Model Pipeline](images/pipeline.png)
-
 The pipeline consists of the following steps:
 
 1. Colonoscopy video input
-2. Optical flow extraction
-3. Feature learning with a deep neural network
+2. Optical flow extraction using **RAFT**
+3. Feature extraction using **EfficientNet**
 4. Colon region classification
+
+EfficientNet was used as the backbone network due to its strong performance and computational efficiency, enabling real-time inference.
 
 ---
 
@@ -67,9 +72,8 @@ The pipeline consists of the following steps:
 
 The model was designed to support **real-time colon region classification** during colonoscopy procedures.
 
-Example prediction results:
-
-![Prediction Example](images/prediction_example.png)
+EfficientNet enables efficient feature extraction, while RAFT provides accurate motion estimation from video frames.  
+This combination allows the system to classify colon regions during the procedure.
 
 ---
 
@@ -83,34 +87,12 @@ Evaluation metrics include:
 - Confusion Matrix
 - Per-region classification performance
 
-Example evaluation results:
-
-![Confusion Matrix](images/results_confusion_matrix.png)
-
 ---
 
-# Repository Structure
+# Key Technologies
 
+- **RAFT** for optical flow estimation
+- **EfficientNet** for visual feature extraction
+- Deep learning-based colon region classification
+- Real-time inference from colonoscopy video
 
-colon-region-classification
-│
-├ README.md
-├ images
-│ ├ pipeline.png
-│ ├ dataset_example.png
-│ └ prediction_example.png
-│
-├ models
-│
-├ optical_flow
-│
-└ results
-
-
----
-
-# Applications
-
-- Colonoscopy navigation assistance
-- Automated colon region recognition
-- AI-assisted colonoscopy systems
